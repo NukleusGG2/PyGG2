@@ -1,10 +1,10 @@
 from __future__ import division
 
-import function
+import function, pygrafix
 
 class NodeRenderer(object):
     def __init__(self):
-        self.sprite = function.load_image("circle_red.png")
+        self.sprite = function.load_image("red_circle")
 
     def render(self, renderer, game, state, node):
 

@@ -15,12 +15,15 @@ class Node(Entity):
         self.connection_commands = [] # The commands to get to that connection
 
         self.history = [] # When searching a path, this is the path from the source node to this one
-        self.pathlength
+        self.pathlength = -1
 
     def add_connection(self, othernode, distance, command):
         self.connection_nodes.append(othernode)
         self.connection_distances.append(distance)
         self.connection_commands.append(command)
+
+    def interpolate(self, prev_entity, next_entity, alpha):
+        pass
 
     def search_path(self, target):
         # Recursive function that goes through all node connections until it finds a target node
@@ -34,13 +37,17 @@ class Node(Entity):
             if node in self.history:
                 continue
 
+            path = None
+
             # Compare the current path length of that other node with the current one
             possible_pathlength = self.pathlength+self.connection_distances[self.connection_nodes.index(node)]
-            if node.pathlength > possible_pathlength:
+            if node.pathlength > possible_pathlength or node.pathlength < 0:
                 node.history = self.history[:]
                 node.pathlength = possible_pathlength
                 path = node.searchpath(target)# Let it calculate it's neighbours too, until it returns either None or a path
                 if path != None:
-                    return path
+                    break
 
-        return None # Nothing here
+        self.history = []
+        self.pathlength = -1
+        return path

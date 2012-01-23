@@ -56,7 +56,7 @@ class Scattergun(Weapon):
         random.seed(str(owner.get_player(game, state).id) + ";" + str(state.time))
 
         for i in range(10):
-            node.Node(game, state, (self.owner.x, self.owner.y))
+            node.Node(game, state, (state.entities[self.owner].x, state.entities[self.owner].y))
 
             direction = owner.get_player(game, state).aimdirection + (7 - random.randint(0, 15))
 
