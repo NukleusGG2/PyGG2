@@ -7,6 +7,7 @@ import random
 import function
 import entity
 import projectile
+import node
 
 # abstract class, don't directly instantiate
 class Weapon(entity.Entity):
@@ -55,6 +56,8 @@ class Scattergun(Weapon):
         random.seed(str(owner.get_player(game, state).id) + ";" + str(state.time))
 
         for i in range(10):
+            node.Node(game, state, (self.owner.x, self.owner.y))
+
             direction = owner.get_player(game, state).aimdirection + (7 - random.randint(0, 15))
 
             # add user speed to bullet speed but don't change direction of the bullet
