@@ -22,7 +22,7 @@ class Game:
         self.current_state = gamestate.Gamestate()
         self.previous_state = self.current_state.copy()
 
-        #self.nodemap = nodemap.Nodemap(self, self.current_state) # TO CREATE NODES, UNCOMMENT THIS
+        self.nodemap = nodemap.Nodemap(self, self.current_state) # TO CREATE NODES, UNCOMMENT THIS
 
         # this accumulator is used to update the engine in fixed timesteps
         self.accumulator = 0.0

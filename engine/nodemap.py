@@ -35,5 +35,6 @@ class Nodemap(object):
                         onPlane = True
 
                 else:# We're off the ground, but we were a pixel ago. Also, we're not at the beginning of the screen.
-                    self.nodelist.append(node.Node(game, state, (x-1, y)))
-                    onPlane = False
+                    if onPlane:
+                        self.nodelist.append(node.Node(game, state, (x-1, y)))
+                        onPlane = False
