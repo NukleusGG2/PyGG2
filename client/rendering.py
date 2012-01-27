@@ -11,10 +11,12 @@ import map_renderer
 import character_renderer
 import weapon_renderer
 import projectile_renderer
+import node_renderer
 import spectator
 import engine.character
 import engine.weapon
 import engine.projectile
+import engine.node
 
 class GameRenderer(object):
     def __init__(self, client):
@@ -43,7 +45,8 @@ class GameRenderer(object):
             engine.weapon.Shotgun: weapon_renderer.ShotgunRenderer(),
             engine.weapon.Revolver: weapon_renderer.RevolverRenderer(),
             engine.projectile.Shot: projectile_renderer.ShotRenderer(),
-            engine.projectile.Rocket: projectile_renderer.RocketRenderer()
+            engine.projectile.Rocket: projectile_renderer.RocketRenderer(),
+            engine.node.Node: node_renderer.NodeRenderer()
         }
 
         self.world_sprites = pygrafix.sprite.SpriteGroup(scale_smoothing = False)
